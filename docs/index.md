@@ -17,7 +17,7 @@ You can find a command reference in [Bloom Commands.md](Bloom_Commands.md) and
 
 ### Launch ReBloom with Docker
 ```
-docker run -p 6379:6379 --name redis-rebloom redislabs/rebloom:latest
+docker run -p 6379:6379 --name redis-rebloom goodform/rebloom:latest
 ```
 
 ### Use ReBloom with `redis-cli`

@@ -8,7 +8,7 @@ both allow you to add items to a set (in effect making sure the item has been
 ## Building and running
 
 ```sh
-git clone https://github.com/RedisLabsModules/rebloom.git
+git clone https://github.com/goodform/rebloom.git
 cd rebloom
 make
 

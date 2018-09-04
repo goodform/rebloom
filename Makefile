@@ -64,10 +64,10 @@ clean:
 distclean: clean
 
 docker:
-	docker build -t redislabs/rebloom .
+	docker build -t goodform/rebloom .
 
 docker_push: docker
-	docker push redislabs/rebloom:latest
+	docker push goodform/rebloom:latest
 
 # Compile an executable that prints the current version
 print_version:  $(SRCDIR)/version.h $(SRCDIR)/print_version.c

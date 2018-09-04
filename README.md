@@ -4,7 +4,7 @@ This module provides two probabalistic data structures as Redis data types:
 **Bloom Filters** and **Cuckoo Filters**. These two structures are similar in
 their purpose but have different performance and functionality characteristics
 
-[![CircleCI](https://circleci.com/gh/RedisLabsModules/rebloom.svg?style=svg)](https://circleci.com/gh/RedisLabsModules/rebloom)
+[![CircleCI](https://circleci.com/gh/goodform/rebloom.svg?style=svg)](https://circleci.com/gh/goodform/rebloom)
 
 
 ## Quick Start Guide
@@ -18,7 +18,7 @@ You can find a command reference in [Bloom_Commands.md](docs/Bloom_Commands.md)
 
 ### 1. Launch ReBloom with Docker
 ```
-docker run -p 6379:6379 --name redis-rebloom redislabs/rebloom:latest
+docker run -p 6379:6379 --name redis-rebloom goodform/rebloom:latest
 ```
 
 ### 2. Use ReBloom with `redis-cli`

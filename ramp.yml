@@ -1,8 +1,8 @@
 display_name: ReBloom
-author: Redis Labs
-email: redismodules@redislabs.com
+author: goodform
+email: freeandopenredismodules@gmail.com
 description: Bloom Filter Module for Redis
-homepage: http://rebloom.io
+homepage: https://goodform.org/rebloom
 license: AGPLv3
 command_line_args: ""
 min_redis_version: "4.0"
