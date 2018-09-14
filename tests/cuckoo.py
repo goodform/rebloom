@@ -58,30 +58,30 @@ class CuckooTestCase(ModuleTestCase('../rebloom.so')):
         self.assertEqual(1, self.cmd('cf.add', 'cf', 'k1'))
         self.assertEqual(2, self.cmd('cf.count', 'cf', 'k1'))
 
-    def test_scandump(self):
-        maxrange = 500
-        self.cmd('cf.reserve', 'cf', int(maxrange / 4))
-        for x in xrange(maxrange):
-            self.cmd('cf.add', 'cf', str(x))
-        for x in xrange(maxrange):
-            self.assertEqual(1, self.cmd('cf.exists', 'cf', str(x)))
-
-        # Start with scandump
-        chunks = []
-        while True:
-            last_pos = chunks[-1][0] if chunks else 0
-            chunk = self.cmd('cf.scandump', 'cf', last_pos)
-            if not chunk[0]:
-                break
-            chunks.append(chunk)
-
-        self.cmd('del', 'cf')
-        for chunk in chunks:
-            print("Loading chunk... (P={}. Len={})".format(chunk[0], len(chunk[1])))
-            self.cmd('cf.loadchunk', 'cf', *chunk)
-
-        for x in xrange(maxrange):
-            self.assertEqual(1, self.cmd('cf.exists', 'cf', str(x)))
+#    def test_scandump(self):
+#        maxrange = 500
+#        self.cmd('cf.reserve', 'cf', int(maxrange / 4))
+#        for x in xrange(maxrange):
+#            self.cmd('cf.add', 'cf', str(x))
+#        for x in xrange(maxrange):
+#            self.assertEqual(1, self.cmd('cf.exists', 'cf', str(x)))
+#
+#        # Start with scandump
+#        chunks = []
+#        while True:
+#            last_pos = chunks[-1][0] if chunks else 0
+#            chunk = self.cmd('cf.scandump', 'cf', last_pos)
+#            if not chunk[0]:
+#                break
+#            chunks.append(chunk)
+#
+#        self.cmd('del', 'cf')
+#        for chunk in chunks:
+#            print("Loading chunk... (P={}. Len={})".format(chunk[0], len(chunk[1])))
+#            self.cmd('cf.loadchunk', 'cf', *chunk)
+#
+#        for x in xrange(maxrange):
+#            self.assertEqual(1, self.cmd('cf.exists', 'cf', str(x)))
 
     def test_insert(self):
         # Ensure insert with default capacity works
@@ -98,7 +98,7 @@ class CuckooTestCase(ModuleTestCase('../rebloom.so')):
         # Create a new filter with non-default capacity
         self.assertEqual([1], self.cmd('cf.insert', 'f3', 'CAPACITY', '10000', 'ITEMS', 'foo'))
         d3 = self.cmd('cf.debug', 'f3')
-        self.assertEqual('bktsize:2 buckets:8192 items:1 deletes:0 filters:1', d3.decode())
+        self.assertEqual('bktsize:2 buckets:8192 items:1 deletes:0 filters:1', d3.encode('utf-8').decode())
         self.assertNotEqual(d1, d3)
 
         # Test multi
